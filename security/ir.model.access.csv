@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_validate_spare_part_wizard,validate.spare.part.wizard,model_validate_spare_part_wizard,base.group_user,1,1,1,1
+access_validate_spare_part_wizard_line,validate.spare.part.wizard.line,model_validate_spare_part_wizard_line,base.group_user,1,1,1,1
+
+access_maintenance_request_line,maintenance.request.line,model_maintenance_request_line,base.group_user,1,1,1,1
+
+
+
+access_maintenance_equipment_plan,maintenance.equipment.plan,model_maintenance_equipment_plan,base.group_user,1,1,1,1
+

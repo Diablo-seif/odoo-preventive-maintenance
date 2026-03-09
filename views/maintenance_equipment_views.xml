@@ -1,0 +1,81 @@
+<odoo>
+    <data>
+
+
+        <record id="equipment_form_inherit" model="ir.ui.view">
+            <field name="name">equipment.form.inherit</field>
+            <field name="model">maintenance.equipment</field>
+            <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='employee_id']" position="after">
+                    <field name="type_of_maintenance" string="Maintenance Procedure"/>
+                </xpath>
+
+
+                <xpath expr="//page[@name='maintenance']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+
+                <xpath expr="//page[@name='product_information']" position="after">
+
+
+                    <page string="Maintenance Plan" name="maintenance_plan">
+                        <field name="maintenance_equipment_plan_ids">
+                            <list editable="bottom" default_order="done asc, in_case asc">
+                                <field name="tasks" readonly="done"/>
+                                <field name="in_case" string="Consumption" readonly="done"/>
+                                <field name="in_case_unit" />
+                                <field name="done" invisible="1"/>
+
+                            </list>
+                        </field>
+                    </page>
+                </xpath>
+
+                <xpath expr="//page[@name='product_information']" position="after">
+
+                    <page string="Maintenance" name="maintenance_hours"
+                          invisible="not type_of_maintenance">
+                        <group>
+                            <group name="statistics">
+                                <label for="expected_mtbf" string="Expected Mean Time Between Failure"/>
+                                <div class="o_row">
+                                    <field name="expected_mtbf"/>
+                                    <span invisible="type_of_maintenance != 'days'">Days</span>
+                                    <span invisible="type_of_maintenance != 'hours'">Hours</span>
+                                    <span invisible="type_of_maintenance != 'weeks'">Weeks</span>
+                                    <span invisible="type_of_maintenance != 'years'">Years</span>
+                                    <span invisible="type_of_maintenance != 'kilometers'">KiloMeters</span>
+                                </div>
+
+                                <label for="mtbf" string="Mean Time Between Failure"/>
+                                <div class="o_row">
+                                    <field name="mtbf"/>
+                                    <span>Days</span>
+                                </div>
+
+                                <field name="estimated_next_failure"
+                                       string="Estimated time before next failure (in days)"/>
+
+                                <field name="latest_failure_date" string="Latest Failure"/>
+
+                                <label for="mttr" string="Mean Time To Repair"/>
+                                <div class="o_row">
+                                    <field name="mttr"/>
+                                    <span>Days</span>
+                                </div>
+                            </group>
+                        </group>
+                    </page>
+
+
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+
+</odoo>

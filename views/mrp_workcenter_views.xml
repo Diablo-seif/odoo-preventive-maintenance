@@ -1,0 +1,62 @@
+<odoo>
+    <data>
+        <record id="mrp_workcenter_form_inherit" model="ir.ui.view">
+            <field name="name">mrp.workcenter.form.inherit</field>
+            <field name="model">mrp.workcenter</field>
+            <field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='resource_calendar_id']" position="after">
+                    <field name="type_of_maintenance"/>
+                </xpath>
+
+                <xpath expr="//page[@name='maintenance']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <xpath expr="//notebook" position="inside">
+                    <page string="Maintenance" name="maintenance">
+                        <group>
+                            <group name="maintenance">
+                                <field name="effective_date"/>
+                                <field name="maintenance_team_id" context="{'default_company_id':company_id}"/>
+                                <field name="technician_user_id" domain="[('share', '=', False)]"/>
+                            </group>
+                            <group name="statistics">
+                                <label for="expected_mtbf" string="Expected Mean Time Between Failure"/>
+                                <div class="o_row">
+                                    <field name="expected_mtbf"/>
+                                    <span invisible="1" >Days</span>
+                                    <span invisible="type_of_maintenance != 'days'">Days</span>
+                                    <span invisible="type_of_maintenance != 'hours'">Hours</span>
+                                    <span invisible="type_of_maintenance != 'weeks'">Weeks</span>
+                                    <span invisible="type_of_maintenance != 'years'">Years</span>
+                                    <span invisible="type_of_maintenance != 'kilometers'">KiloMeters</span>
+                                </div>
+                                <label for="mtbf" string="Mean Time Between Failure"/>
+                                <div class="o_row">
+                                    <field name="mtbf"/>
+                                    <span>Days</span>
+                                </div>
+                                <label for="estimated_next_failure" string="Estimated Next Failure"/>
+                                <div class="o_row">
+                                    <field name="estimated_next_failure"/>
+                                </div>
+                                <field name="latest_failure_date" string="Latest Failure"/>
+                                <label for="mttr" string="Mean Time To Repair"/>
+                                <div class="o_row">
+                                    <field name="mttr"/>
+                                    <span>Days</span>
+                                </div>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+
+
+    </data>
+
+</odoo>
