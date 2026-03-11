@@ -21,7 +21,7 @@ class MaintenanceRequest(models.Model):
 
     type_of_maintenance = fields.Selection(
         related="equipment_id.type_of_maintenance",
-        string="Maintenance Type", )
+        string="Category of Maintenance ", )
 
     expected_mtbf = fields.Integer(
         related="equipment_id.expected_mtbf",

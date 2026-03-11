@@ -14,7 +14,7 @@ class MaintenanceEquipment(models.Model):
         ('kilometers', 'KiloMeters'),
     ],
         default='days',
-        string='Maintenance',
+        string='Type of Maintenance',
         required=True,
 
     )

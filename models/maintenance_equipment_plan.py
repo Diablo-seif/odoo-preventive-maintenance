@@ -3,6 +3,7 @@ from odoo.exceptions import ValidationError
 
 class MaintenanceEquipmentPlan (models.Model):
     _name = 'maintenance.equipment.plan'
+    _description = "Plan for Maintenance Equipment"
     _order = 'done asc, in_case asc'
 
     maintenance_equipment_id = fields.Many2one(
