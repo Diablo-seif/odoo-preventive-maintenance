@@ -157,7 +157,7 @@ class MaintenanceRequest(models.Model):
                                 plan.done = True
                             break
 
-                    else:
+                    elif plan.in_case:
 
                         time_in_days = None
                         if plan.in_case_unit == 'hours':
