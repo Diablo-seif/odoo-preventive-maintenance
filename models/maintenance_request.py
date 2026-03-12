@@ -157,43 +157,43 @@ class MaintenanceRequest(models.Model):
                                 plan.done = True
                             break
 
-                        else:
-
-                            time_in_days = None
-                            if plan.in_case_unit == 'hours':
-                                time_in_days = plan.in_case / 8
-                            elif plan.in_case_unit == 'days':
-                                time_in_days = plan.in_case
-                            elif plan.in_case_unit == 'weeks':
-                                time_in_days = plan.in_case * 7
-                            elif plan.in_case_unit == 'years':
-                                time_in_days = plan.in_case * 365
-
-                            if time_in_days is not None:
-                                the_day = today + timedelta(days=time_in_days)
-
-                                scheduled_dt = datetime.combine(the_day, time(9, 0, 0))
-                                if future_request_exists(plan.tasks, request.equipment_id.id):
-                                    continue
-                                else:
-
-                                    self.create({
-                                        'name': plan.tasks,
-                                        'equipment_id': request.equipment_id.id,
-                                        'maintenance_type': 'preventive',
-                                        'equipment_consumption': request.equipment_consumption,
-                                        'request_date': the_day,
-                                        'schedule_date': scheduled_dt,
-                                        'duration': 1.0,
-                                        'user_id': request.user_id.id,
-                                    })
-                                    plan.done = True
-                                    break
-                            else:
-                                continue
-
                     else:
-                        continue
+
+                        time_in_days = None
+                        if plan.in_case_unit == 'hours':
+                            time_in_days = plan.in_case / 8
+                        elif plan.in_case_unit == 'days':
+                            time_in_days = plan.in_case
+                        elif plan.in_case_unit == 'weeks':
+                            time_in_days = plan.in_case * 7
+                        elif plan.in_case_unit == 'years':
+                            time_in_days = plan.in_case * 365
+
+                        if time_in_days is not None:
+                            the_day = today + timedelta(days=time_in_days)
+
+                            scheduled_dt = datetime.combine(the_day, time(9, 0, 0))
+                            if future_request_exists(plan.tasks, request.equipment_id.id):
+                                continue
+                            else:
+
+                                self.create({
+                                    'name': plan.tasks,
+                                    'equipment_id': request.equipment_id.id,
+                                    'maintenance_type': 'preventive',
+                                    'equipment_consumption': request.equipment_consumption,
+                                    'request_date': the_day,
+                                    'schedule_date': scheduled_dt,
+                                    'duration': 1.0,
+                                    'user_id': request.user_id.id,
+                                })
+                                plan.done = True
+                                break
+                        else:
+                            continue
+
+                else:
+                    continue
         return True
 
 
