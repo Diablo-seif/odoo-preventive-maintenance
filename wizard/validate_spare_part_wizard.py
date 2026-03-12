@@ -81,7 +81,7 @@ class ValidateSparePartWizardLine(models.TransientModel):
 
 
     @api.constrains('quantity', 'qty_available')
-    def _check_quantity(self):
+    def check_quantity(self):
         for line in self:
 
             if line.qty_available == 0:
