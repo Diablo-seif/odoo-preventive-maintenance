@@ -4,6 +4,7 @@
     'summary': 'Property for Real Estate',
     'depends': [
                 'base',
+                'maintenance',
                 'mail',
                 'hr_maintenance',
                 'maintenance',
