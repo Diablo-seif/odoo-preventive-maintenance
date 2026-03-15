@@ -52,6 +52,11 @@ class MaintenanceRequest(models.Model):
 
 
 
+    @api.onchange('equipment_id')
+    def _onchange_equipment_consumption(self):
+        for record in self:
+            record.equipment_consumption = 0
+
 
 
 
