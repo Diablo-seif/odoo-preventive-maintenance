@@ -27,7 +27,7 @@
                                 <field name="tasks" readonly="done"/>
                                 <field name="in_case" string="Consumption" readonly="done"/>
                                 <field name="in_case_unit" />
-                                <field name="done" invisible="1"/>
+                                <field name="done" readonly="1"/>
 
                             </list>
                         </field>
