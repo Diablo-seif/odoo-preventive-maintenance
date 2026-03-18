@@ -6,6 +6,12 @@
             <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
             <field name="arch" type="xml">
 
+                <xpath expr="//sheet/*[1]" position="before">
+                    <widget name="web_ribbon" title="Maintenance Plan" bg_color="text-bg-warning"
+                            invisible="not check_maintenance_plan"/>
+                </xpath>
+
+
                 <xpath expr="//header/button[@name='archive_equipment_request']" position="before">
                     <button name="action_go_validate_spare_part"
                             string="Get Spare Part"
