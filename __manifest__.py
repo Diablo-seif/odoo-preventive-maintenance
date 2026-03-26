@@ -1,7 +1,7 @@
 {
-    'name': 'Customization Maintenance',
+    'name': 'Periodic Maintenance',
     'version': '1.8',
-    'summary': 'Property for Real Estate',
+    'summary': 'Maintenance for Periodic',
     'depends': [
                 'base',
                 'maintenance',
